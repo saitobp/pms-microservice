@@ -1,0 +1,30 @@
+{
+  "name": "api-products",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --quiet --cls ./src/server.ts",
+    "build": "npx babel src --extensions .ts --out-dir dist"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.43"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.3",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-decorators": "^7.17.2",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@pms-microservices/tsconfig": "*",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.18",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  }
+}

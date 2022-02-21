@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  api-products:
+    container_name: api-products
+    image: pms-microservices/api-products:0.1
+    networks:
+      - atividade2
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-products
+
+  db-products:
+    container_name: db-products
+    image: postgres:14-alpine
+    networks:
+      - atividade2
+    environment:
+      - POSTGRES_USER=saitoAdmin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db-products
+    ports:
+      - 9000:5432
+    volumes:
+      - db-products-volume:/var/lib/postgresql/data
+
+volumes:
+  db-products-volume:
+
+networks:
+  atividade2:
