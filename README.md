@@ -25,3 +25,17 @@ To run all docker images, use docker compose
 ```shell
 docker-compose up
 ```
+
+## Api Products
+
+To make a GET request for all products:
+
+```shell
+curl http://localhost:5000/api/products
+```
+
+To make a POST request for a product:
+
+```shell
+curl -X POST http://localhost:5000/api/products -H 'Content-Type: application/json' -d '{"name":"curl","quantity":"123"}'
+```

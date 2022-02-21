@@ -1,5 +1,5 @@
 {
-  "extends": "@pms-microservices/tsconfig/base.json",
+  "extends": "@pms-microservices/tsconfig/src/base.json",
   "compilerOptions": {
     "target": "ES2017",
     "module": "commonjs",
