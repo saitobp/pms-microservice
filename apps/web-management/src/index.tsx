@@ -9,12 +9,12 @@ import './resetStyles.css'
 import Router from './pages/Router'
 
 render(
-  <StrictMode>
-    <ThemeProvider theme={basicTheme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </ThemeProvider>
-  </StrictMode>,
-  document.getElementById('root')
+    <StrictMode>
+        <ThemeProvider theme={basicTheme}>
+            <BrowserRouter>
+                <Router />
+            </BrowserRouter>
+        </ThemeProvider>
+    </StrictMode>,
+    document.getElementById('root'),
 )
