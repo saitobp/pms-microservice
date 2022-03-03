@@ -5,7 +5,7 @@ import Button from './Button'
 import { IButtonProps } from './utils/button.types'
 
 export default {
-  title: 'Basic Theme/Inputs/Button',
+  title: 'Inputs/Button',
   component: Button,
   decorators: [
     Story => (
