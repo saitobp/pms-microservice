@@ -11,5 +11,6 @@ export const parameters = {
     source: {
       excludeDecorators: true
     }
-  }
+  },
+  layout: 'fullscreen'
 }
