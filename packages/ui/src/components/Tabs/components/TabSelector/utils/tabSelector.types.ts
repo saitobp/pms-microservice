@@ -1,4 +1,5 @@
-export interface ITabSelectorProps {
-  onClick: () => void
-  tabName: string
+export interface ITabSelection {
+  onClick: (index: number) => void
+  tabsName: string[]
+  currentTab: number
 }

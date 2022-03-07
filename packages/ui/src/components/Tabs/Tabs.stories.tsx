@@ -2,6 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import { Tabs, ITabsProps, TabItem } from '.'
+import { Text } from '../../index'
 
 export default {
   title: 'Layout/Tabs',
@@ -10,12 +11,12 @@ export default {
 
 const Template: Story<ITabsProps> = args => (
   <Tabs {...args}>
-    <TabItem tabName='Teste'>
-      <div>Hi</div>
+    <TabItem tabName='Tab 1'>
+      <Text>Hello from tab 1</Text>
     </TabItem>
 
-    <TabItem tabName='Teste2'>
-      <div>Hi 2</div>
+    <TabItem tabName='Tab 2'>
+      <Text>Hello from tab 2</Text>
     </TabItem>
   </Tabs>
 )

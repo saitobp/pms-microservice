@@ -1,42 +1,26 @@
-import React, { FC, Children, isValidElement, ReactElement, useState, ReactNode } from 'react'
-import { ITabItemProps } from './components/TabItem/utils/tabItem.types'
-import { ITabsProps } from './utils/tabs.types'
+import React, { FC } from 'react'
 
-import { TabSelector } from './components/TabSelector'
+import { TabSelection } from './components/TabSelector'
+
+import { ITabsProps } from './utils/tabs.types'
+import { useTabsStyles } from './utils/tabs.styles'
+import { useTabs } from './hooks/useTabs'
 
 const Tabs: FC<ITabsProps> = props => {
-  const { children, initialTab } = props
+  const { children } = props
 
-  const tabsName: string[] = []
-  const tabsChildren: ReactNode[] = []
-
-  const [selectedTab, setSelectedTab] = useState<number>(initialTab || 0)
-
-  Children.map(children, child => {
-    if (!isValidElement<ITabItemProps>(child)) return child
-
-    const elementChild: ReactElement<ITabItemProps> = child
-
-    if (!elementChild.props.tabName) throw new Error('Please use only TabItem Components inside Tabs')
-
-    tabsName.push(elementChild.props.tabName)
-    tabsChildren.push(elementChild.props.children)
-    return elementChild
-  })
+  const { tabs } = useTabs(props, children)
+  const classes = useTabsStyles()
 
   return (
     <div>
-      <div>
-        {tabsName.map((name, index) => (
-          <TabSelector key={`tabsNameId-${index}`} tabName={name} onClick={() => setSelectedTab(index)} />
-        ))}
-      </div>
+      <TabSelection tabsName={tabs.names} onClick={tabs.setSelected} currentTab={tabs.selected} />
 
-      <div>
-        {tabsName.map((name, index) => {
-          if (selectedTab !== index) return null
+      <div className={classes.tabContent}>
+        {tabs.names.map((name, index) => {
+          if (tabs.selected !== index) return null
 
-          return <div key={`tabsContentId-${index}`}>{tabsChildren[index]}</div>
+          return <div key={`tabsContentId-${index}`}>{tabs.children[index]}</div>
         })}
       </div>
     </div>

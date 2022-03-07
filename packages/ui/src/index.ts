@@ -1,5 +1,8 @@
 export { default as Button } from './components/Button/Button'
 
+/* Layout */
+export { Tabs, TabItem } from './components/Tabs'
+
 /* Naviagtion */
 export { default as Nav } from './components/Nav/Nav'
 export { INavProps } from './components/Nav/utils/nav.types'
