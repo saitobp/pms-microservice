@@ -1,20 +1,20 @@
 import { createUseStyles } from 'react-jss'
 
-import { uiTheme } from '../../../utils/ui.theme'
+import { theme } from '../../../utils/theme'
 
 export const useNavStyles = createUseStyles(() => ({
   root: {
     width: '280px',
     maxHeight: '100%',
-    borderRight: `2px solid ${uiTheme.pallete.lightGray}`,
-    color: uiTheme.pallete.black,
+    borderRight: `2px solid ${theme.pallete.lightGray}`,
+    color: theme.pallete.black,
     display: 'flex',
     flexDirection: 'column',
-    padding: `${uiTheme.spacing.medium} 0`,
+    padding: `${theme.spacing.medium} 0`,
   },
 
   title: {
-    padding: `0 ${uiTheme.spacing.medium}`,
+    padding: `0 ${theme.spacing.medium}`,
     marginBottom: '10%',
   },
 
@@ -22,6 +22,6 @@ export const useNavStyles = createUseStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     overflowY: 'auto',
-    padding: `0 ${uiTheme.spacing.medium}`,
+    padding: `0 ${theme.spacing.medium}`,
   },
 }))

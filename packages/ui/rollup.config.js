@@ -13,13 +13,7 @@ export default [
       { file: main, format: 'cjs', sourcemap: true },
       { file: module, format: 'esm', sourcemap: true },
     ],
-    plugins: [
-      external(),
-      resolve(),
-      commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
-      terser(),
-    ],
+    plugins: [external(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
   },
   {
     input: 'dist/esm/types/index.d.ts',

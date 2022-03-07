@@ -2,6 +2,8 @@ import React, { FC, Children, isValidElement, ReactElement, useState, ReactNode 
 import { ITabItemProps } from './components/TabItem/utils/tabItem.types'
 import { ITabsProps } from './utils/tabs.types'
 
+import { TabSelector } from './components/TabSelector'
+
 const Tabs: FC<ITabsProps> = props => {
   const { children, initialTab } = props
 
@@ -26,9 +28,7 @@ const Tabs: FC<ITabsProps> = props => {
     <div>
       <div>
         {tabsName.map((name, index) => (
-          <button key={`tabsNameId-${index}`} onClick={() => setSelectedTab(index)}>
-            {name}
-          </button>
+          <TabSelector key={`tabsNameId-${index}`} tabName={name} onClick={() => setSelectedTab(index)} />
         ))}
       </div>
 

@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react'
 
-export const uiTheme = {
+export const theme = {
   pallete: {
     white: '#ffffff',
     lightGray: '#e9ecef',
@@ -45,5 +45,9 @@ export const uiTheme = {
       fontWeight: 'normal',
       fontSize: '1rem',
     } as CSSProperties,
+  },
+
+  transitions: {
+    fast: '250ms',
   },
 }

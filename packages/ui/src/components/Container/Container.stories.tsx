@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { uiTheme } from '../../utils/ui.theme'
+import { theme } from '../../utils/theme'
 
 import Container from './Container'
 import { IContainerProps } from './utils/container.types'
@@ -14,7 +14,7 @@ export default {
 const squareStyle: CSSProperties = {
   width: '50px',
   height: '50px',
-  backgroundColor: uiTheme.pallete.gray,
+  backgroundColor: theme.pallete.gray,
   margin: '5px',
 }
 

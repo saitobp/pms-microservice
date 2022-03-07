@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss'
 
-import { uiTheme } from '../../../../../utils/ui.theme'
+import { theme } from '../../../../../utils/theme'
 
 export const useNavItemStyles = createUseStyles(() => ({
   root: {
@@ -11,21 +11,21 @@ export const useNavItemStyles = createUseStyles(() => ({
     alignItems: 'center',
     fontSize: '1.25rem',
     fontWeight: '300',
-    borderLeft: `${uiTheme.spacing.tiny} solid transparent`,
+    borderLeft: `${theme.spacing.tiny} solid transparent`,
     userSelect: 'none',
     transition: '200ms background',
 
     '&:hover': {
-      backgroundColor: uiTheme.pallete.black,
-      color: uiTheme.pallete.white,
+      backgroundColor: theme.pallete.black,
+      color: theme.pallete.white,
     },
   },
 
   selectedItem: {
-    borderLeft: `${uiTheme.spacing.tiny} solid ${uiTheme.pallete.black}`,
+    borderLeft: `${theme.spacing.tiny} solid ${theme.pallete.black}`,
   },
 
   icon: {
-    marginRight: uiTheme.spacing.large,
+    marginRight: theme.spacing.large,
   },
 }))

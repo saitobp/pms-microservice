@@ -1,8 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Button from './Button'
-import { IButtonProps } from './utils/button.types'
+import { Button, IButtonProps } from './index'
 
 export default {
   title: 'Inputs/Button',
@@ -14,7 +13,12 @@ export default {
       </div>
     ),
   ],
-} as Meta
+  argTypes: {
+    variant: {
+      defaultValue: 'default',
+    },
+  },
+} as Meta<IButtonProps>
 
 const Template: Story<IButtonProps> = args => <Button {...args} />
 
@@ -24,3 +28,9 @@ Primary.args = {
 }
 
 export const Default = Template.bind({})
+
+/* Temporary name */
+export const Variant2 = Template.bind({})
+Variant2.args = {
+  variant: 'tab',
+}

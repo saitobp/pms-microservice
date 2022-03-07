@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss'
 
-import { uiTheme } from '../../../utils/ui.theme'
+import { theme } from '../../../utils/theme'
 
 export const usePanelStyles = createUseStyles({
   overlay: {
@@ -8,7 +8,7 @@ export const usePanelStyles = createUseStyles({
     top: '0',
     height: '100vh',
     width: '100vw',
-    backgroundColor: uiTheme.semanticColors.overlayBackground,
+    backgroundColor: theme.semanticColors.overlayBackground,
   },
 
   root: {
@@ -16,12 +16,12 @@ export const usePanelStyles = createUseStyles({
     right: '0',
     width: '400px',
     height: '100%',
-    backgroundColor: uiTheme.pallete.white,
+    backgroundColor: theme.pallete.white,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     boxSizing: 'border-box',
-    padding: uiTheme.spacing.medium,
+    padding: theme.spacing.medium,
   },
 
   header: {
@@ -37,7 +37,7 @@ export const usePanelStyles = createUseStyles({
   content: {
     height: '100%',
     overflowY: 'auto',
-    margin: `${uiTheme.spacing.large} 0`,
+    margin: `${theme.spacing.large} 0`,
   },
 
   actions: {

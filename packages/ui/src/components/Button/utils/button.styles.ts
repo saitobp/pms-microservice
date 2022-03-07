@@ -1,26 +1,39 @@
 import { createUseStyles } from 'react-jss'
 
-import { uiTheme } from '../../../utils/ui.theme'
+import { theme } from '../../../utils/theme'
 
 import { IButtonProps } from './button.types'
 
 export const useButtonStyles = createUseStyles(() => ({
   root: {
+    minWidth: '96px',
     fontFamily: 'montserrat',
-    background: 'none',
-    color: ({ primary }: IButtonProps) => (primary ? uiTheme.pallete.white : uiTheme.pallete.black),
-    border: `1px solid ${uiTheme.pallete.black}`,
-    backgroundColor: ({ primary }: IButtonProps) => (primary ? uiTheme.pallete.black : ''),
-    padding: uiTheme.spacing.small,
     font: 'inherit',
+    background: 'none',
     cursor: 'pointer',
     outline: 'inherit',
-    transition: '250ms background',
-    minWidth: '96px',
+    padding: theme.spacing.small,
+  },
+
+  default: {
+    color: ({ primary }: IButtonProps) => (primary ? theme.pallete.white : theme.pallete.black),
+    border: `1px solid ${theme.pallete.black}`,
+    backgroundColor: ({ primary }: IButtonProps) => (primary ? theme.pallete.black : ''),
+    transition: `${theme.transitions.fast} background`,
 
     '&:hover': {
-      background: ({ primary }: IButtonProps) => (primary ? uiTheme.pallete.white : uiTheme.pallete.black),
-      color: ({ primary }: IButtonProps) => (primary ? uiTheme.pallete.black : uiTheme.pallete.white),
+      background: ({ primary }: IButtonProps) => (primary ? theme.pallete.white : theme.pallete.black),
+      color: ({ primary }: IButtonProps) => (primary ? theme.pallete.black : theme.pallete.white),
+    },
+  },
+
+  tab: {
+    border: 'none',
+    borderBottom: ({ isSelected }: IButtonProps) => (isSelected ? `1px solid ${theme.pallete.black}` : 'transparent'),
+    transition: `${theme.transitions.fast} border-bottom`,
+
+    '&:hover': {
+      borderBottom: `1px solid ${theme.pallete.black}`,
     },
   },
 }))
