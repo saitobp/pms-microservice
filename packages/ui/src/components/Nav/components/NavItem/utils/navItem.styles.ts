@@ -12,7 +12,7 @@ export const useNavItemStyles = createUseStyles(() => ({
     fontSize: '1.25rem',
     fontWeight: '300',
     userSelect: 'none',
-    width: '100%',
+    width: 'auto',
   },
 
   selectedItem: {},

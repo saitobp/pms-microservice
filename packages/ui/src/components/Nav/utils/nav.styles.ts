@@ -12,7 +12,7 @@ export const useNavStyles = createUseStyles({
       orientation === 'vertical' ? `2px solid ${theme.pallete.lightGray}` : null,
     color: theme.pallete.black,
     display: 'flex',
-    flexDirection: ({ orientation }: INavProps) => (orientation === 'vertical' ? 'column' : 'row'),
+    flexDirection: 'column',
     padding: `${theme.spacing.medium} 0`,
     borderBottom: ({ orientation }: INavProps) =>
       orientation === 'vertical' ? null : `1px solid ${theme.pallete.lightGray}`,
@@ -21,14 +21,15 @@ export const useNavStyles = createUseStyles({
 
   title: {
     padding: `0 ${theme.spacing.medium}`,
-    marginBottom: '10%',
+    marginBottom: ({ orientation }: INavProps) => (orientation === 'vertical' ? '10%' : theme.spacing.medium),
   },
 
   navItems: {
     display: 'flex',
     flexDirection: ({ orientation }: INavProps) => (orientation === 'vertical' ? 'column' : 'row'),
     gap: ({ orientation }: INavProps) => (orientation === 'vertical' ? '0px' : theme.spacing.medium),
-    overflowY: 'auto',
-    padding: `0 ${theme.spacing.medium}`,
+    overflowY: ({ orientation }: INavProps) => (orientation === 'vertical' ? 'auto' : null),
+    width: ({ orientation }: INavProps) => (orientation === 'vertical' ? null : '100%'),
+    padding: ({ orientation }: INavProps) => (orientation === 'vertical' ? `0 ${theme.spacing.medium}` : null),
   },
 })

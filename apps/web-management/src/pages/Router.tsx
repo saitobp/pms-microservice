@@ -1,10 +1,9 @@
 import { FC, useEffect } from 'react'
 import { Nav, INavItem } from '@pms-microservices/ui'
-import { Routes, Route } from 'react-router-dom'
 
-import { Products } from './Products'
+import { ProductsRoutes } from './Products'
 
-const items: INavItem[] = [{ name: 'Produtos', path: '/' }]
+const items: INavItem[] = [{ name: 'Produtos' }]
 
 const Router: FC = () => {
   useEffect(() => {
@@ -15,9 +14,7 @@ const Router: FC = () => {
     <>
       <Nav title='Pizzaria Management System' items={items} />
 
-      <Routes>
-        <Route path='/' element={<Products />} />
-      </Routes>
+      <ProductsRoutes />
     </>
   )
 }

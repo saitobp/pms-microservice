@@ -1,24 +1,31 @@
 import { FC } from 'react'
-import { Text, theme, Tabs, TabItem } from '@pms-microservices/ui'
+import { theme, Nav, INavItem } from '@pms-microservices/ui'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const Products: FC = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  console.log(location)
+
+  const items: INavItem[] = [
+    { name: 'Listagem de Produtos', onClick: () => navigate('./product-list') },
+    { name: 'Listagem de Items', onClick: () => navigate('./item-list') },
+    { name: 'Tipos de Items', onClick: () => navigate('./item-type') },
+  ]
   return (
     <div style={{ padding: theme.spacing.medium, width: '100%' }}>
-      <Text>Produtos</Text>
+      <Nav title='Produtos' items={items} orientation='horizontal' />
 
-      <Tabs>
-        <TabItem tabName='Listagem de Produtos'>
-          <Text component='h2'>Listagem de produtos</Text>
-        </TabItem>
+      <div style={{ marginBottom: '16px' }}>
+        <input type='text' placeholder='Pesquisar...' />
 
-        <TabItem tabName='Listagem de Items'>
-          <Text component='h2'>Listagem de items</Text>
-        </TabItem>
+        <button onClick={() => navigate(`${location.pathname}/new`)}>Novo</button>
+        <button>Editar</button>
+        <button>Remover</button>
+      </div>
 
-        <TabItem tabName='Tipos de Items'>
-          <Text component='h2'>Tipos de Items</Text>
-        </TabItem>
-      </Tabs>
+      <Outlet />
     </div>
   )
 }

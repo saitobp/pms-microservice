@@ -11,7 +11,6 @@ export interface INavItemProps {
 
 export interface INavItem {
   name: string
-  path: string
   icon?: IconType
   onClick?: () => void
 }

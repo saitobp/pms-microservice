@@ -2,6 +2,7 @@ export { default as Button } from './components/Button/Button'
 
 /* Layout */
 export { Tabs, TabItem } from './components/Tabs'
+export { Panel } from './components/Panel'
 
 /* Naviagtion */
 export { default as Nav } from './components/Nav/Nav'

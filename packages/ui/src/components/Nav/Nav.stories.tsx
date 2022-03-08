@@ -13,8 +13,8 @@ export default {
     },
     items: {
       defaultValue: [
-        { name: 'Dashboard', path: '/dashboard1', icon: MdSpaceDashboard },
-        { name: 'Dashboard', path: '/dashboard2', icon: MdSpaceDashboard },
+        { name: 'Dashboard', icon: MdSpaceDashboard },
+        { name: 'Dashboard', icon: MdSpaceDashboard },
       ],
     },
     orientation: {
@@ -34,8 +34,8 @@ HorizontalNoTitle.args = {
   orientation: 'horizontal',
   noTitle: true,
   items: [
-    { name: 'Tab 1', path: '/tab1', onClick: () => console.log('click') },
-    { name: 'Tab 2', path: '/tab2', onClick: () => console.log('click') },
+    { name: 'Tab 1', onClick: () => console.log('click') },
+    { name: 'Tab 2', onClick: () => console.log('click') },
   ],
   defaultSelected: 0,
 }

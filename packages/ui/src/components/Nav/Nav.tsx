@@ -24,7 +24,7 @@ const Nav: FC<INavProps> = props => {
       <div className={classes.navItems}>
         {items.map((item, index) => (
           <NavItem
-            key={item.path}
+            key={item.name}
             item={item}
             orientation={orientation}
             isSelected={index === selected}
