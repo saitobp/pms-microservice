@@ -11,19 +11,11 @@ export const useNavItemStyles = createUseStyles(() => ({
     alignItems: 'center',
     fontSize: '1.25rem',
     fontWeight: '300',
-    borderLeft: `${theme.spacing.tiny} solid transparent`,
     userSelect: 'none',
-    transition: '200ms background',
-
-    '&:hover': {
-      backgroundColor: theme.pallete.black,
-      color: theme.pallete.white,
-    },
+    width: '100%',
   },
 
-  selectedItem: {
-    borderLeft: `${theme.spacing.tiny} solid ${theme.pallete.black}`,
-  },
+  selectedItem: {},
 
   icon: {
     marginRight: theme.spacing.large,
