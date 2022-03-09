@@ -20,6 +20,7 @@ const Products: FC = () => {
       <div style={{ marginBottom: '16px' }}>
         <input type='text' placeholder='Pesquisar...' />
 
+        <button>Visualizar</button>
         <button onClick={() => navigate(`${location.pathname}/new`)}>Novo</button>
         <button>Editar</button>
         <button>Remover</button>

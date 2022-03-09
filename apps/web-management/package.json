@@ -13,6 +13,7 @@
     "@pms-microservices/ui": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.27.1",
     "react-icons": "^4.3.1",
     "react-jss": "^10.9.0",
     "react-router-dom": "^6.2.1"
