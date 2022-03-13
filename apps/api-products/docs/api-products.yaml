@@ -1,17 +1,17 @@
 openapi: '3.0.2'
 
 info:
-  title: API Products
+  title: Products API
   version: '1.0'
-  description: 'API responsible for handling all products and products related informations'
+  description: API responsible for handling all products and products related information
+
+servers:
+  - url: https://api.localhost/v1/products/
 
 tags:
   - name: Beverages
   - name: Pizzas
   - name: Products
-
-servers:
-  - url: https://api.localhost/v1/products/
 
 paths:
   /beverages/:
