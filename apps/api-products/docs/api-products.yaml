@@ -1,0 +1,389 @@
+openapi: '3.0.2'
+
+info:
+  title: API Products
+  version: '1.0'
+  description: 'API responsible for handling all products and products related informations'
+
+tags:
+  - name: Beverages
+  - name: Pizzas
+  - name: Products
+
+servers:
+  - url: https://api.localhost/v1/products/
+
+paths:
+  /beverages/:
+    post:
+      tags:
+        - Beverages
+      summary: Create a new beverage product
+      operationId: createBeverageProduct
+      requestBody:
+        $ref: '#/components/requestBodies/Beverage'
+      responses:
+        201:
+          $ref: '#/components/responses/CommonCreated'
+
+  /beverages/{productId}/:
+    get:
+      tags:
+        - Beverages
+      summary: Get a beverage product by id
+      operationId: getBeverageProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        200:
+          $ref: '#/components/responses/BeverageById'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+    put:
+      tags:
+        - Beverages
+      summary: Update a beverage product by id
+      operationId: updateBeverageProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        $ref: '#/components/requestBodies/Beverage'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+    delete:
+      tags:
+        - Beverages
+      summary: Delete a beverage product by id
+      operationId: deleteBeverageProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+  /beverages/{productId}/status:
+    patch:
+      tags:
+        - Beverages
+      summary: Update a beverage status by id
+      operationId: patchBeverageProductStatusById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        $ref: '#/components/requestBodies/ProductStatus'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+  /pizzas/:
+    post:
+      tags:
+        - Pizzas
+      summary: Create a new pizza product
+      operationId: createPizzaProduct
+      requestBody:
+        $ref: '#/components/requestBodies/Pizza'
+      responses:
+        201:
+          $ref: '#/components/responses/CommonCreated'
+
+  /pizzas/{productId}/:
+    get:
+      tags:
+        - Pizzas
+      summary: Get a pizza product by id
+      operationId: getPizzaProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        200:
+          $ref: '#/components/responses/PizzaById'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+    put:
+      tags:
+        - Pizzas
+      summary: Update a pizza product by id
+      operationId: updatePizzaProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        $ref: '#/components/requestBodies/Pizza'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+    delete:
+      tags:
+        - Pizzas
+      summary: Delete a pizza product by id
+      operationId: deletePizzaProductById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+  /pizzas/{productId}/status:
+    patch:
+      tags:
+        - Pizzas
+      summary: Update a pizza status by id
+      operationId: patchBeverageProductStatusById
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        $ref: '#/components/requestBodies/ProductStatus'
+      responses:
+        200:
+          $ref: '#/components/responses/CommonOk'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+        404:
+          $ref: '#/components/responses/CommonNotFound'
+
+  /:
+    post:
+      tags:
+        - Products
+      summary: Create a new product
+      operationId: createProduct
+      requestBody:
+        $ref: '#/components/requestBodies/Product'
+      responses:
+        201:
+          $ref: '#/components/responses/CommonCreated'
+        400:
+          $ref: '#/components/responses/CommonBadRequest'
+
+    get:
+      tags:
+        - Products
+      summary: List all products (beverages and pizzas)
+      operationId: getAllProducts
+      responses:
+        200:
+          $ref: '#/components/responses/Products'
+
+components:
+  parameters:
+    ProductId:
+      name: productId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  requestBodies:
+    Beverage:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              sizes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    volume:
+                      type: string
+              status:
+                $ref: '#/components/schemas/ProductStatus'
+            required:
+              - title
+              - sizes
+              - status
+
+    Pizza:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pizza'
+            required:
+              - title
+              - sizes
+              - status
+              - ingredientsId
+
+    ProductStatus:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                $ref: '#/components/schemas/ProductStatus'
+
+    Product:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
+
+  responses:
+    CommonOk:
+      description: Ok
+
+    CommonCreated:
+      description: Created
+
+    CommonBadRequest:
+      description: Bad request
+
+    CommonNotFound:
+      description: Not found
+
+    BeverageById:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Beverage'
+
+    PizzaById:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pizza'
+
+    Products:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Product'
+  schemas:
+    Beverage:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        sizes:
+          type: array
+          items:
+            type: object
+            properties:
+              volume:
+                type: string
+        status:
+          $ref: '#/components/schemas/ProductStatus'
+
+    Pizza:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProductStatus'
+        sizes:
+          $ref: '#/components/schemas/PizzaSizes'
+        ingredientsConfiguration:
+          type: array
+          items:
+            $ref: '#/components/schemas/IngredientsConfiguration'
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        type:
+          $ref: '#/components/schemas/ProductTypes'
+        items:
+          type: array
+          items:
+            type: string
+            format: uuid
+        prices:
+          type: array
+          items:
+            type: object
+            properties:
+              size:
+                type: string
+              price:
+                type: string
+
+    IngredientsConfiguration:
+      type: object
+      properties:
+        ingredientId:
+          type: string
+        quantities:
+          type: array
+          items:
+            properties:
+              size:
+                type: string
+                enum:
+                  - SMALL
+                  - MEDIUM
+                  - LARGE
+              quantity:
+                type: string
+
+    ProductStatus:
+      type: string
+      enum:
+        - AVAILABLE
+        - UNAVAILABLE
+
+    PizzaSizes:
+      type: array
+      items:
+        type: string
+        enum:
+          - SMALL
+          - MEDIUM
+          - LARGE
+    
+    ProductTypes:
+      type: string
+      enum:
+        - PIZZA
+        - BEVERAGE
+        - COMBO
