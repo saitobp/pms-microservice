@@ -11,7 +11,7 @@ import { usePanelStyles } from './utils/panel.styles'
 import { IPanelProps } from './utils/panel.types'
 
 const Panel: FC<IPanelProps> = props => {
-  const { children, isOpen, onClose, title } = props
+  const { children, isOpen, onClose, title, formId } = props
 
   const { modal } = usePanelPortal()
   const classes = usePanelStyles()
@@ -30,7 +30,9 @@ const Panel: FC<IPanelProps> = props => {
         <main className={classes.content}>{children}</main>
 
         <div className={classes.actions}>
-          <Button>Salvar</Button>
+          <Button type='submit' form={formId}>
+            Salvar
+          </Button>
           <Button onClick={() => onClose()}>Fechar</Button>
         </div>
       </section>

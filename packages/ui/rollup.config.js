@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import { terser } from 'rollup-plugin-terser'
+
 import { main, module } from './package.json'
 
 export default [

@@ -10,6 +10,11 @@
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
+    "@emotion/babel-plugin": "^11.7.2",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.1",
     "@pms-microservices/ui": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -24,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.2",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
@@ -31,7 +37,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.8",
     "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.23",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
   }

@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
-import './resetStyles.css'
+// import './tailwind.css'
 
 import Router from './pages/Router'
 

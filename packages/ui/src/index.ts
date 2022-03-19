@@ -12,5 +12,9 @@ export { INavItem } from './components/Nav/components/NavItem/utils/navItem.type
 /* Display */
 export { default as Text } from './components/Text/Text'
 
+/* Inputs */
+export { BaseInputContainer } from './components/BaseInputContainer'
+export { BaseInput } from './components/BaseInput'
+
 /* Utils */
 export { theme } from './utils/theme'

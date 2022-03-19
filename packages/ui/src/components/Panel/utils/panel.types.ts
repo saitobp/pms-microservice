@@ -1,5 +1,6 @@
 export interface IPanelProps {
   isOpen: boolean
-  onClose: () => void
   title: string
+  onClose: () => void
+  formId?: string
 }
