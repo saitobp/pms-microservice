@@ -1,22 +1,26 @@
 import { Router } from 'express'
-import { Connection } from 'typeorm'
-import { Products } from '../entity/Products'
+import { MainDataSource } from '../connections'
 
-import { productsRepository } from '../repository/productsRepository'
+import { NewProductDTO } from '../dto/products/NewProductDTO'
 
-export const productsController = (connection: Connection) => {
+import { Products } from '../entities/Products'
+
+const productsRepository = MainDataSource.getRepository(Products)
+
+export const productsController = () => {
   const router = Router()
-  const repository = productsRepository(connection)
 
   router.get('/', async (req, res, next) => {
-    const data = await repository.find()
+    const data = await productsRepository.find()
 
     res.json({ data })
   })
 
   router.post('/', async (req, res, next) => {
-    const body: Products = req.body
-    await repository.save(body)
+    const body: NewProductDTO = req.body
+    // await _productsRepository.save(body)
+
+    console.log(body)
 
     return res.sendStatus(201)
   })

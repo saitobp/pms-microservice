@@ -1,31 +1,28 @@
 import 'reflect-metadata'
 import express from 'express'
+import cors from 'cors'
 import { Application } from 'express'
-import { createConnection } from 'typeorm'
-import { productsController } from './controllers/productsController'
 
-import { Products } from './entity/Products'
+// import { Products } from './entities/Products'
+import { MainDataSource } from './connections'
+import { seeds } from './seeds/seeds'
+
+import { productsController } from './controllers/productsController'
+import { productsPizzaController } from './controllers/productsPizzaController'
 
 const app: Application = express()
 const port: number = 5000 || process.env.PORT
 
-createConnection({
-  type: 'postgres',
-  name: 'products',
-  url: 'postgres://saitoAdmin:password@host.docker.internal:9000/db-products',
-  synchronize: true,
-  logging: false,
-  entities: [Products],
-  migrations: ['./migration/**/*.js'],
-  subscribers: ['./subscribers/**/*.js'],
-})
-  .then(async connection => {
-    const productsRouter = productsController(connection)
+MainDataSource.initialize()
+  .then(async () => {
+    await seeds()
 
+    app.use(cors())
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
 
-    app.use('/api/products', productsRouter)
+    app.use('/api/products', productsController())
+    app.use('/api/products/pizzas', productsPizzaController())
 
     try {
       app.listen(port, () => console.log(`Server running on port ${port}`))

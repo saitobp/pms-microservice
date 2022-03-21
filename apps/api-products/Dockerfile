@@ -12,5 +12,5 @@ RUN yarn install
 WORKDIR /app/apps/api-products
 COPY ./apps/api-products /app/apps/api-products
 RUN yarn build
-RUN npm i -g pm2
-CMD pm2-runtime ./dist/server.js
+RUN npm install pm2
+CMD npx pm2-runtime ./dist/server.js

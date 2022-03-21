@@ -7,6 +7,7 @@ info:
 
 servers:
   - url: https://api.localhost/v1/products/
+  - url: http://localhost:5000/api/products
 
 tags:
   - name: Beverages
@@ -170,6 +171,15 @@ paths:
         404:
           $ref: '#/components/responses/CommonNotFound'
 
+  /pizzas/categories:
+    get:
+      tags:
+        - Pizzas
+      summary: Get all categories for pizzas
+      responses:
+        200:
+          $ref: '#/components/responses/PizzaCategories'
+
   /:
     post:
       tags:
@@ -279,6 +289,17 @@ components:
           schema:
             $ref: '#/components/schemas/Pizza'
 
+    PizzaCategories:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaCategories'
+
     Products:
       description: Ok
       content:
@@ -323,6 +344,15 @@ components:
           items:
             $ref: '#/components/schemas/IngredientsConfiguration'
 
+    PizzaCategories:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        categories:
+          $ref: '#/components/schemas/PizzaCategoriesEnum'
+
     Product:
       type: object
       properties:
@@ -333,11 +363,11 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/ProductTypes'
-        items:
-          type: array
-          items:
-            type: string
-            format: uuid
+        # items:
+        #   type: array
+        #   items:
+        #     type: string
+        #     format: uuid
         prices:
           type: array
           items:
@@ -347,6 +377,8 @@ components:
                 type: string
               price:
                 type: string
+        category:
+          type: string
 
     IngredientsConfiguration:
       type: object
@@ -387,3 +419,9 @@ components:
         - PIZZA
         - BEVERAGE
         - COMBO
+
+    PizzaCategoriesEnum:
+      type: string
+      enum:
+        - SAVOURY
+        - SWEET

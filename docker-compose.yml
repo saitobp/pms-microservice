@@ -2,9 +2,11 @@ version: '3.9'
 services:
   api-products:
     container_name: api-products
-    image: pms-microservices/api-products:0.1
+    build:
+      dockerfile: ./apps/api-products/Dockerfile
+      context: .
     networks:
-      - atividade2
+      - pms-network
     environment:
       - PORT=5000
       - NODE_ENV=production
@@ -17,7 +19,7 @@ services:
     container_name: db-products
     image: postgres:14-alpine
     networks:
-      - atividade2
+      - pms-network
     environment:
       - POSTGRES_USER=saitoAdmin
       - POSTGRES_PASSWORD=password
@@ -31,4 +33,4 @@ volumes:
   db-products-volume:
 
 networks:
-  atividade2:
+  pms-network:

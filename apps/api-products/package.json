@@ -4,14 +4,16 @@
   "main": "./dist/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --quiet --cls ./src/server.ts",
+    "dev": "ts-node-dev --quiet --cls ./src/server.ts",
+    "dev:seed": "ts-node-dev --quiet --cls ./src/seeds/seeds.ts",
     "build": "npx babel src --extensions .ts --out-dir dist"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.43"
+    "typeorm": "^0.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
@@ -22,6 +24,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@pms-microservices/tsconfig": "*",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.18",
     "ts-node-dev": "^1.1.8",
