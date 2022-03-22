@@ -308,6 +308,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Product'
+
   schemas:
     Beverage:
       type: object
@@ -335,14 +336,19 @@ components:
           format: uuid
         title:
           type: string
+        category:
+          $ref: '#/components/schemas/PizzaCategory'
+        small:
+          type: number
+          format: float
+        medium:
+          type: number
+          format: float
+        large:
+          type: number
+          format: float
         status:
-          $ref: '#/components/schemas/ProductStatus'
-        sizes:
-          $ref: '#/components/schemas/PizzaSizes'
-        ingredientsConfiguration:
-          type: array
-          items:
-            $ref: '#/components/schemas/IngredientsConfiguration'
+          $ref: '#/components/schemas/PizzaStatus'
 
     PizzaCategories:
       type: object
@@ -351,7 +357,7 @@ components:
           type: string
           format: uuid
         categories:
-          $ref: '#/components/schemas/PizzaCategoriesEnum'
+          $ref: '#/components/schemas/PizzaCategory'
 
     Product:
       type: object
@@ -420,8 +426,14 @@ components:
         - BEVERAGE
         - COMBO
 
-    PizzaCategoriesEnum:
+    PizzaCategory:
       type: string
       enum:
         - SAVOURY
         - SWEET
+
+    PizzaStatus:
+      type: string
+      enum:
+        - AVAILABLE
+        - UNAVAILABLE

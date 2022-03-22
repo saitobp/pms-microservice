@@ -1,21 +1,35 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class Pizza {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   public id: string
 
-  @Column({type: 'text'})
-  public category: string
+  @Column({ type: 'text' })
+  public title: string
+
+  @Column({ type: 'text' })
+  public category: PizzaCategory
+
+  @Column({ type: 'float' })
+  public small: number
+
+  @Column({ type: 'float' })
+  public medium: number
+
+  @Column({ type: 'float' })
+  public large: number
+
+  @Column({ type: 'text' })
+  public status: PizzaStatus
 }
 
-export enum PizzaCategories {
-  SAVOURY = 'savoury',
-  SWEET = 'sweet'
+export enum PizzaCategory {
+  SAVOURY = 'SAVOURY',
+  SWEET = 'SWEET',
 }
 
-export enum PizzaSizes {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
+export enum PizzaStatus {
+  AVAILABLE = 'AVAILABLE',
+  UNAVAILABLE = 'UNAVAILABLE',
 }

@@ -1,16 +1,19 @@
 import { StrictMode } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-
-// import './tailwind.css'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 import Router from './pages/Router'
 
+const queryClient = new QueryClient()
+
 render(
   <StrictMode>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </QueryClientProvider>
   </StrictMode>,
   document.getElementById('root'),
 )

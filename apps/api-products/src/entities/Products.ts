@@ -11,3 +11,8 @@ export class Products {
   @Column({type: 'text'})
   quantity: number
 }
+
+export enum ProductType {
+  PIZZA = 'PIZZA',
+  BEVARAGE = 'BEVARAGE'
+}

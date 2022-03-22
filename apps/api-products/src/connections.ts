@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm'
+import { Pizza } from './entities/Pizza'
 import { PizzaCategories } from './entities/Pizza/PizzaCategories'
 
 export const MainDataSource = new DataSource({
@@ -7,5 +8,5 @@ export const MainDataSource = new DataSource({
   url: 'postgres://saitoAdmin:password@host.docker.internal:9000/db-products',
   synchronize: true,
   logging: false,
-  entities: [PizzaCategories]
+  entities: [Pizza, PizzaCategories]
 })

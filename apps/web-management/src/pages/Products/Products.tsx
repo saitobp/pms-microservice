@@ -1,22 +1,39 @@
-import { FC } from 'react'
-import { theme, Nav, INavItem } from '@pms-microservices/ui'
+import { FC, useState } from 'react'
+import { Tabs, Tab, Box } from '@mui/material'
+import { theme } from '@pms-microservices/ui'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const Products: FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  console.log(location)
+  const [tab, setTab] = useState<number>(0)
 
-  const items: INavItem[] = [
-    { name: 'Listagem de Produtos', onClick: () => navigate('./product-list') },
+  const items = [
+    { name: 'Pizzas', onClick: () => navigate('./pizzas') },
     { name: 'Listagem de Items', onClick: () => navigate('./item-list') },
     { name: 'Tipos de Items', onClick: () => navigate('./item-type') },
   ]
+
+  const onTabChange = (onClick: () => void, index: number) => {
+    onClick()
+    setTab(index)
+  }
+
   return (
     <div style={{ padding: theme.spacing.medium, width: '100%' }}>
-      <Nav title='Produtos' items={items} orientation='horizontal' />
-
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        {' '}
+        <Tabs value={tab}>
+          {items.map((item, index) => (
+            <Tab
+              key={`products-tab-${index}`}
+              label={item.name}
+              onClick={() => onTabChange(item.onClick, index)}
+            />
+          ))}
+        </Tabs>
+      </Box>
       <div style={{ marginBottom: '16px' }}>
         <input type='text' placeholder='Pesquisar...' />
 

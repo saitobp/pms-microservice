@@ -7,7 +7,7 @@ import { ProductsRoutes } from './Products'
 const Router: FC = () => {
   const navigate = useNavigate()
 
-  const items: INavItem[] = [{ name: 'Produtos', onClick: () => navigate('/products') }]
+  const items: INavItem[] = [{ name: 'Produtos', onClick: () => navigate('/products/pizzas') }]
 
   useEffect(() => {
     document.getElementById('root')?.setAttribute('style', 'display: flex; height: 100vh')
