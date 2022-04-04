@@ -6,7 +6,7 @@ info:
   description: API responsible for handling all customers related information
 
 servers:
-  - url: https://api.localhost/v1/customers
+  - url: http://localhost:5001/api/customers
 
 tags:
   - name: Customers

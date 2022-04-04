@@ -1,36 +1,63 @@
 version: '3.9'
 services:
-  api-products:
-    container_name: api-products
-    build:
-      dockerfile: ./apps/api-products/Dockerfile
-      context: .
-    networks:
-      - pms-network
-    environment:
-      - PORT=5000
-      - NODE_ENV=production
-    ports:
-      - 5000:5000
-    depends_on:
-      - db-products
+  # api-products:
+  #   container_name: api-products
+  #   build:
+  #     dockerfile: ./apps/api-products/Dockerfile
+  #     context: .
+  #   networks:
+  #     - pms-network
+  #   environment:
+  #     - PORT=5000
+  #     - NODE_ENV=production
+  #   ports:
+  #     - 5000:5000
+  #   depends_on:
+  #     - db-products
 
-  db-products:
-    container_name: db-products
+  # db-products:
+  #   container_name: db-products
+  #   image: postgres:14-alpine
+  #   networks:
+  #     - pms-network
+  #   environment:
+  #     - POSTGRES_USER=saitoAdmin
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=db-products
+  #   ports:
+  #     - 9000:5432
+  #   volumes:
+  #     - db-products-volume:/var/lib/postgresql/data
+      
+  db-customers:
+    container_name: db-customers
     image: postgres:14-alpine
     networks:
       - pms-network
     environment:
       - POSTGRES_USER=saitoAdmin
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=db-products
+      - POSTGRES_DB=db-customers
     ports:
-      - 9000:5432
+      - 9001:5432
     volumes:
-      - db-products-volume:/var/lib/postgresql/data
+      - db-customers-volume:/var/lib/postgresql/data
+
+  db-customers-tests:
+    container_name: db-customers-tests
+    image: postgres:14-alpine
+    networks:
+      - pms-network
+    environment:
+      - POSTGRES_USER=saitoAdmin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db-customers-tests
+    ports:
+      - 9101:5432
 
 volumes:
   db-products-volume:
+  db-customers-volume:
 
 networks:
   pms-network:
