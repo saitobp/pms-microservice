@@ -15,6 +15,21 @@ services:
   #   depends_on:
   #     - db-products
 
+  api-customers:
+    container_name: api-customers
+    build:
+      dockerfile: ./apps/api-customers/Dockerfile
+      context: .
+    networks:
+      - pms-network
+    environment:
+      - PORT=5001
+      - NODE_ENV=production
+    ports:
+      - 5001:5001
+    depends_on:
+      - db-customers
+
   # db-products:
   #   container_name: db-products
   #   image: postgres:14-alpine
@@ -43,17 +58,18 @@ services:
     volumes:
       - db-customers-volume:/var/lib/postgresql/data
 
-  db-customers-tests:
-    container_name: db-customers-tests
-    image: postgres:14-alpine
-    networks:
-      - pms-network
-    environment:
-      - POSTGRES_USER=saitoAdmin
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=db-customers-tests
-    ports:
-      - 9101:5432
+  # TEST ONLY!
+  # db-customers-tests:
+  #   container_name: db-customers-tests
+  #   image: postgres:14-alpine
+  #   networks:
+  #     - pms-network
+  #   environment:
+  #     - POSTGRES_USER=saitoAdmin
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=db-customers-tests
+  #   ports:
+  #     - 9101:5432
 
 volumes:
   db-products-volume:
