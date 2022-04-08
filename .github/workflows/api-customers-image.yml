@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build Container Image
-        run: docker image build -f ./apps/api-customers/Dockerfile -t $IMAGE_NAME
+        run: docker image build --file ./apps/api-customers/Dockerfile --tag $IMAGE_NAME
 
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghrc.io -u ${{ github.actor }} --password-stdin
