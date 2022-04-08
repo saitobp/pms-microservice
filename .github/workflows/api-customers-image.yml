@@ -1,0 +1,22 @@
+name: Push API Customers Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Container Image
+        run: docker image build -f ./apps/api-customers/Dockerfile -t $IMAGE_NAME
+
+      - name: Log into GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghrc.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image to GitHub Container Registry
+        run: IMAGE_ID=ghrc.io/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.run_id }} | docker push $IMAGE_ID
