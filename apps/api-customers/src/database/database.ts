@@ -5,7 +5,7 @@ import { Customer } from '../models/Customer'
 let Database = new DataSource({
   type: 'postgres',
   name: 'customers',
-  url: 'postgres://postgres:password@database-2.cky5ttiocteg.us-east-1.rds.amazonaws.com:5432/db-customers',
+  url: 'postgres://postgres:password@database-2.cky5ttiocteg.us-east-1.rds.amazonaws.com:5432/customers',
   synchronize: true,
   logging: false,
   entities: [Customer],
