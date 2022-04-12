@@ -71,9 +71,9 @@ services:
   #   ports:
   #     - 9101:5432
 
-volumes:
-  # db-products-volume:
-  # db-customers-volume:
+# volumes:
+#   db-products-volume:
+#   db-customers-volume:
 
 networks:
   pms-network:
