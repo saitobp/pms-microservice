@@ -27,8 +27,8 @@ services:
       - NODE_ENV=production
     ports:
       - 5001:5001
-    depends_on:
-      - db-customers
+    # depends_on:
+    #   - db-customers
 
   # db-products:
   #   container_name: db-products
@@ -44,19 +44,19 @@ services:
   #   volumes:
   #     - db-products-volume:/var/lib/postgresql/data
 
-  db-customers:
-    container_name: db-customers
-    image: postgres:14-alpine
-    networks:
-      - pms-network
-    environment:
-      - POSTGRES_USER=saitoAdmin
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=db-customers
-    ports:
-      - 9001:5432
-    volumes:
-      - db-customers-volume:/var/lib/postgresql/data
+  # db-customers:
+  #   container_name: db-customers
+  #   image: postgres:14-alpine
+  #   networks:
+  #     - pms-network
+  #   environment:
+  #     - POSTGRES_USER=saitoAdmin
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=db-customers
+  #   ports:
+  #     - 9001:5432
+  #   volumes:
+  #     - db-customers-volume:/var/lib/postgresql/data
 
   # TEST ONLY!
   # db-customers-tests:
@@ -72,8 +72,8 @@ services:
   #     - 9101:5432
 
 volumes:
-  db-products-volume:
-  db-customers-volume:
+  # db-products-volume:
+  # db-customers-volume:
 
 networks:
   pms-network:
