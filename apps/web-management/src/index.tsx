@@ -3,6 +3,8 @@ import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from 'react-query'
 
+import './index.css'
+
 import Router from './pages/Router'
 
 const queryClient = new QueryClient()

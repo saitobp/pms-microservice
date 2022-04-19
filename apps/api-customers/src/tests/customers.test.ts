@@ -41,6 +41,7 @@ describe('Test CRUD for Customers', () => {
 
     expect(response.statusCode).toBe(200)
     expect(results.data.length).toBe(1)
+    expect(results.data[0].id).not.toBeNull()
     expect(results.data[0].name).toBe('Customer Test')
     expect(results.data[0].phone).toBe('Phone Test')
     expect(results.data[0].address).toBe('Address Test')
