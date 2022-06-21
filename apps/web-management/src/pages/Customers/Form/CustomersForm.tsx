@@ -1,71 +1,51 @@
 import { FC } from 'react'
-import { Button, Group, Modal, Stack } from '@mantine/core'
 
 import { ICommonSubPageFormProps } from '../../../types/common.types'
 
 import { ControlledTextInput } from '../../../components/ControlledTextInput'
+import { FormModal } from '../../../components'
 
 import { useCustomersForm } from './hooks/useCustomersForm'
 
-const CustomersForm: FC<ICommonSubPageFormProps> = props => {
+const CustomersForm: FC<ICommonSubPageFormProps> = (props) => {
   const { type } = props
 
   const { methods, handleSubmit, handleClose } = useCustomersForm(props)
 
   return (
-    <Modal
-      centered
-      opened
-      onClose={handleClose}
+    <FormModal
       title={type === 'NEW' ? 'Cadastro de Cliente' : 'Edição de Cliente'}
-      closeOnClickOutside={false}
-      trapFocus
+      formId='customersForm'
+      onSubmit={handleSubmit}
+      onClose={handleClose}
     >
-      <form id='customersForm' onSubmit={handleSubmit}>
-        <Stack>
-          <Stack spacing='xs'>
-            <ControlledTextInput
-              methods={methods}
-              name='name'
-              label='Nome'
-              placeholder='Nome'
-              autoComplete='none'
-              required
-            />
+      <ControlledTextInput
+        methods={methods}
+        name='name'
+        label='Nome'
+        placeholder='Nome'
+        autoComplete='none'
+        required
+      />
 
-            <ControlledTextInput
-              methods={methods}
-              name='phone'
-              label='Telefone'
-              placeholder='Telefone'
-              autoComplete='none'
-              required
-            />
+      <ControlledTextInput
+        methods={methods}
+        name='phone'
+        label='Telefone'
+        placeholder='Telefone'
+        autoComplete='none'
+        required
+      />
 
-            <ControlledTextInput
-              methods={methods}
-              name='address'
-              label='Endereço'
-              placeholder='Endereço'
-              autoComplete='none'
-              required
-            />
-          </Stack>
-
-          <div>
-            <Group position='right' spacing='xs'>
-              <Button type='submit' form='customersForm'>
-                Salvar
-              </Button>
-
-              <Button variant='default' onClick={handleClose}>
-                Fechar
-              </Button>
-            </Group>
-          </div>
-        </Stack>
-      </form>
-    </Modal>
+      <ControlledTextInput
+        methods={methods}
+        name='address'
+        label='Endereço'
+        placeholder='Endereço'
+        autoComplete='none'
+        required
+      />
+    </FormModal>
   )
 }
 

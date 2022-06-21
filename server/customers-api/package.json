@@ -1,0 +1,31 @@
+{
+  "name": "@pms/customers-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --quiet --cls ./src/server.ts",
+    "test:windows": "set NODE_ENV=TEST&&jest -i",
+    "test:linux": "NODE_ENV=TEST jest -i"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.18.1",
+    "pg": "8.7.3",
+    "reflect-metadata": "0.1.13",
+    "typeorm": "0.3.6"
+  },
+  "devDependencies": {
+    "@pms/api-tsconfig": "*",
+    "@pms/babel-config-api": "*",
+    "@pms/base-prettierrc": "*",
+    "@pms/eslint-config-base": "*",
+    "@types/cors": "2.8.12",
+    "@types/jest": "28.1.2",
+    "@types/supertest": "2.0.12",
+    "jest": "28.1.1",
+    "sqlite3": "5.0.8",
+    "supertest": "6.2.3"
+  },
+  "prettier": "@pms/base-prettierrc"
+}

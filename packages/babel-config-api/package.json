@@ -1,0 +1,17 @@
+{
+  "name": "@pms/babel-config-api",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/babel.config.json",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "7.17.10",
+    "@babel/core": "7.18.5",
+    "@babel/plugin-proposal-class-properties": "7.17.12",
+    "@babel/plugin-proposal-decorators": "7.18.2",
+    "@babel/plugin-proposal-private-property-in-object": "7.17.12",
+    "@babel/preset-env": "7.18.2",
+    "@babel/preset-typescript": "7.17.12",
+    "babel-jest": "28.1.1"
+  }
+}

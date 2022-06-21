@@ -1,0 +1,3 @@
+{
+ "extends": "@pms/babel-config-api/src/babel.config.json"
+}

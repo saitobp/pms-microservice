@@ -1,0 +1,6 @@
+{
+  "name": "@pms/base-tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": ["./src/base.json"]
+}

@@ -23,7 +23,7 @@ const ManagementLayout: FC = () => {
           <Title order={3}>PMS - Pizzaria Management System</Title>
         </Header>
       }
-      styles={theme => ({ main: { backgroundColor: theme.colors.gray[0] } })}
+      styles={(theme) => ({ main: { backgroundColor: theme.colors.gray[0] } })}
     >
       <Outlet />
     </AppShell>

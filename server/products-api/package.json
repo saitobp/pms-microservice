@@ -1,0 +1,15 @@
+{
+  "name": "@pms/products-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --quiet --cls ./src/server.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@pms/api-tsconfig": "*",
+    "@pms/base-prettierrc": "*"
+  },
+  "prettier": "@pms/base-prettierrc"
+}

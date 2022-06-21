@@ -1,0 +1,17 @@
+{
+  "name": "@pms/eslint-config-base",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/parser": "5.28.0",
+    "@typescript-eslint/eslint-plugin": "5.28.0",
+    "eslint-plugin-import": "2.26.0",
+    "@pms/base-prettierrc": "*",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint": "8.17.0"
+  },
+  "prettier": "@pms/base-prettierrc"
+}

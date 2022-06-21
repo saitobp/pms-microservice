@@ -4,13 +4,16 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { ManagementLayout } from '../components/ManagementLayout'
 import { SuspenseRouteElement } from '../components/SuspenseRouteElement'
 
-const CustomersForm = lazy(() => import('./Customers/Form/CustomersForm'))
 const CustomersList = lazy(() => import('./Customers/List/CustomersList'))
+const CustomersForm = lazy(() => import('./Customers/Form/CustomersForm'))
+
+const OrdersList = lazy(() => import('./Orders/List/OrdersList'))
+const OrdersForm = lazy(() => import('./Orders/Form/OrdersForm'))
 
 const Router: FC = () => {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to='customers' />} />
+      <Route path='/' element={<Navigate to='orders' />} />
 
       <Route element={<ManagementLayout />}>
         <Route
@@ -41,13 +44,22 @@ const Router: FC = () => {
         </Route>
 
         <Route
-          path='/products'
+          path='orders'
           element={
             <SuspenseRouteElement>
-              <></>
+              <OrdersList />
             </SuspenseRouteElement>
           }
-        />
+        >
+          <Route
+            path='new'
+            element={
+              <SuspenseRouteElement>
+                <OrdersForm type='NEW' />
+              </SuspenseRouteElement>
+            }
+          />
+        </Route>
       </Route>
     </Routes>
   )

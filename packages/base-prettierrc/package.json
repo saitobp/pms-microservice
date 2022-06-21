@@ -1,0 +1,10 @@
+{
+  "name": "@pms/base-prettierrc",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "./src/.prettierrc.json",
+  "dependencies": {
+    "prettier": "2.7.0"
+  }
+}

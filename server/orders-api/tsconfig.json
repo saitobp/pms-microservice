@@ -1,0 +1,9 @@
+{
+  "extends": "@pms/api-tsconfig/src/api.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./dist/**/*"]
+}

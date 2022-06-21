@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
+    "client/*",
+    "server/*",
     "apps/*",
     "packages/*"
   ],
@@ -13,7 +15,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
     "turbo": "latest"
   },
   "engines": {
