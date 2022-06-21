@@ -30,7 +30,7 @@ describe('CRUD for Customers', () => {
     await db.destroy()
   })
 
-  it('Shoud return a list of Customers', async () => {
+  it('Should return a list of Customers', async () => {
     await seedCustomer()
 
     const response = await request(app).get('/api/customers')
