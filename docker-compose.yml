@@ -1,14 +1,20 @@
 version: '3.9'
 services:
-  # customers-api:
-  #   container_name: customers-api
-  #   build:
-  #     dockerfile: ./server/customers-api/Dockerfile
-  #     context: .
-  #   networks:
-  #     - pms-network
-  #   depends_on:
-  #     - customers-db
+  customers-api:
+    container_name: customers-api
+    build:
+      dockerfile: ./server/customers-api/Dockerfile
+      context: .
+    environment:
+      - PORT=5001
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@host.docker.internal:9001/customers
+    ports:
+      - 5001:5001
+    networks:
+      - pms-network
+    depends_on:
+      - customers-db
 
   customers-db:
     container_name: customers-db

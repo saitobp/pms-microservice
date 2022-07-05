@@ -5,7 +5,7 @@ import { entities } from './entities'
 let db = new DataSource({
   type: 'postgres',
   name: 'customers',
-  url: 'postgres://postgres:password@localhost:9001/customers',
+  url: process.env.DATABASE_URL,
   synchronize: true,
   entities: entities,
 })

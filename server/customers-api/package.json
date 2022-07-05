@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "npx babel src --extensions .ts --out-dir dist",
     "dev": "ts-node-dev --quiet --cls ./src/server.ts",
-    "test:windows": "set NODE_ENV=TEST&&jest -i",
-    "test:linux": "NODE_ENV=TEST jest -i"
+    "test:linux": "NODE_ENV=TEST jest -i",
+    "test:windows": "set NODE_ENV=TEST&&jest -i"
   },
   "dependencies": {
     "cors": "2.8.5",
