@@ -35,3 +35,6 @@ yarn-error.log*
 # apps and packages
 **/dist
 **/node_modules
+
+# Terraform
+.terraform
