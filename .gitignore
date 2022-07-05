@@ -37,4 +37,4 @@ yarn-error.log*
 **/node_modules
 
 # Terraform
-.terraform
+**/.terraform
