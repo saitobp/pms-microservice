@@ -1,0 +1,62 @@
+
+
+name: Deploy AWS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '16.x'
+          
+      - run: yarn install
+      - run: yarn build
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: build
+          path: ./dist
+      
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    
+    env:
+      AWS_KEY: ${{ secrets.AWS_KEY }}
+    
+    steps:
+      - name: ssh-connection
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_KEY }}
+          REMOTE_HOST: '44.203.55.154'
+          REMOTE_USER: 'ubuntu'
+          TARGET: 'public_html'
+          
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: build
+          path: ./dist
+          
+      - name: copy files
+        uses: nogsantos/scp-deploy@master
+        with:
+          src: ./dist/*
+          host: '44.203.55.154'
+          remote: 'public_html'
+          port: '22'
+          user: 'ubuntu'
+          key: ${{ secrets.AWS_KEY }}
